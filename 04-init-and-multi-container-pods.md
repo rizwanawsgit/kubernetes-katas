@@ -1,6 +1,10 @@
 I find it appropriate to introduce multiple containers earlier in this course, so the students can really grasp the idea of having multiple containers in a single pod early on. This will help distinguide kubernetes from docker right from the beginning.
 
 # Init containers:
+specialized containers that run before app containers in a Pod. Init containers can contain utilities or setup scripts not present in an app image.specialized containers that run before app containers in a Pod. Init containers can contain utilities or setup scripts not present in an app image.
+
+You can specify initcontainers in the Pod specification alongside the containers
+If a Pod's init container fails, the kubelet repeatedly restarts that init container until it succeeds. However, if the Pod has a restartPolicy of Never, and an init container fails during startup of that Pod, Kubernetes treats the overall Pod as failed.
 At times you may want to do some prep work for a container before starting it. That pre-work could be done by another container, which would do it's thing and exit before the main container starts. One example could be that you want to serve some static website content which exists as a git hub repository. So you would want something to pull that static content and provide it to the web server. This is called init-container. 
 
 Below is an example, in which we have a "simple-website". The website exists as git repository at `https://github.com/Praqma/simple-website.git` , we want to serve it through the nginx service.
