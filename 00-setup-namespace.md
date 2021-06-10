@@ -1,9 +1,7 @@
 # Setup Namespace
 
-Namespaces are the default way for kubernetes to separate resources.
-    Namespaces do not share anything between them, which is important to know,
-    and thus come in handy when you have multiple users on the same cluster,
-    that you don't want stepping on each other's toes :)
+Namespaces are Kubernetes objects which partition a single Kubernetes cluster into multiple virtual clusters.
+Namespaces do not share anything between them.Namespaces are a way to organize clusters into virtual sub-clusters — they can be helpful when different teams or projects share a Kubernetes cluster. Any number of namespaces are supported within a cluster, each logically separated from others but with the ability to communicate with each other.
 
 ## 1.1 Create a namespace
 
